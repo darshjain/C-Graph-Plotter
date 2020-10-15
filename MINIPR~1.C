@@ -6,6 +6,8 @@ int x, y;            //declared x and y a global
 char labels[20][10]; //declared label as global
 int coordinate_adjuster_y(int);
 int coordinate_adjuster_x(int);
+void sorter(int[], int[], int);
+void swapper(int &, int &);
 void y_plot(int);
 void x_plot(int);
 void bar_chart();
@@ -64,7 +66,7 @@ void bar_chart() //input is labels and numeric
     {
         printf(""); //null
         setfillstyle(i + 1, i + 1);
-	bar(x + 10, 420 - a[i] * factor_y, x + 30, 419);
+        bar(x + 10, 420 - a[i] * factor_y, x + 30, 419);
         setcolor(i + 1);
         outtextxy(x + 10, 425, labels[i]);
         x += 40;
@@ -78,7 +80,7 @@ void bar_chart() //input is labels and numeric
 }
 void line_chart() //input is both numeric
 {
-    int n, i, a[10], b[10], max_value_x = 0, max_value_y = 0,factor_x,factor_y;
+    int n, i, a[10], b[10], max_value_x = 0, max_value_y = 0, factor_x, factor_y;
     cleardevice(); //clears screen it involves filling screen with background color
     printf("Program to Draw a Line Graph in C Graphics");
     printf("\nEnter the no. of inputs\t");
@@ -86,26 +88,26 @@ void line_chart() //input is both numeric
     printf("\nEnter X values\n");
     for (i = 0; i < n; i++)
     {
-	scanf("%d", &a[i]);
-	if (a[i] > max_value_x)
-	    max_value_x = a[i];
+        scanf("%d", &a[i]);
+        if (a[i] > max_value_x)
+            max_value_x = a[i];
     }
     printf("\nEnter Y values\n");
     for (i = 0; i < n; i++)
     {
-	scanf("%d", &b[i]);
-	if (a[i] > max_value_y)
-	    max_value_y = b[i];
+        scanf("%d", &b[i]);
+        if (b[i] > max_value_y)
+            max_value_y = b[i];
     }
     //inputs till here for x and y coordinates
     cleardevice();
-
+    sorter(a, b, n);
     factor_x = coordinate_adjuster_x(max_value_x);
     factor_y = coordinate_adjuster_y(max_value_y);
 
-    for (i = 0; i < n-1;i++)
+    for (i = 0; i < n - 1; i++)
     {
-	line(100 + a[i] * factor_x-20, 420 - b[i] * factor_y, 100 + a[i + 1] * factor_x-20, 420 - b[i + 1] *factor_y);
+        line(100 + a[i] * factor_x - 20, 420 - b[i] * factor_y, 100 + a[i + 1] * factor_x - 20, 420 - b[i + 1] * factor_y);
     }
 
     setcolor(WHITE);
@@ -202,4 +204,22 @@ void x_plot(int max_val) //plot coordinates y axis
         gcvt(plot, 6, str);
         outtextxy(75 + 55 * (i + 1), 420, str);
     }
+}
+void sorter(int x[], int y[], int n) //for line graph
+{
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+
+        for (j = 0; j < n - i - 1; j++)
+            if (x[j] > x[j + 1])
+            {
+                swap(&x[j], &x[j + 1]);
+                swap(&y[j], &y[j + 1]);
+            }
+}
+void swapper(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
 }
