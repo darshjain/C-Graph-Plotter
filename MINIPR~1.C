@@ -23,8 +23,15 @@ int main()
     int graph_choice;
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "c:\\turboc3\\bgi");
-    printf("Select Graph Type:\n1:LINE GRAPH\n2:PIE CHART\n3:BAR GRAPH\n");
+    setbkcolor(12);
+    rectangle(100, 100, 460, 300);
+    rectangle(110, 110, 450, 290);
+    outtextxy(230, 120, "SELECT GRAPH TYPE");
+    outtextxy(130, 130, "1: LINE GRAPH");
+    outtextxy(130, 140, "2: PIE CHART");
+    outtextxy(130, 150, "3: BAR GRAPH");
     scanf("%d", &graph_choice);
+    setbkcolor(12);
     switch (graph_choice)
     {
     case 1:
@@ -82,6 +89,10 @@ void bar_chart() //input is labels and numeric
     line(100, 420, 700, 420); //x axis
     outtextxy(80, 420, "0");
     y_plot(max_value_y);
+    setcolor(11);
+    rectangle(0, 0, 639, getmaxy());
+    rectangle(10, 10, 629, getmaxy() - (10));
+    floodfill(1, 1, 11);
 }
 void line_chart() //input is both numeric
 {
@@ -122,6 +133,10 @@ void line_chart() //input is both numeric
     outtextxy(80, 420, "0");
     y_plot(max_value_y);
     x_plot(max_value_x);
+    setcolor(11);
+    rectangle(0, 0, 639, getmaxy());
+    rectangle(10, 10, 629, getmaxy() - (10));
+    floodfill(1, 1, 11);
     getch();
     cleardevice(); //clears screen it involves filling screen with background color
 }
@@ -129,6 +144,7 @@ void pie_chart() //input is labels and numeric-WORKING CODE
 {
     float end_angle, start_angle = 0;
     int x_center, y_center, total = 0, n, i, a[20], num, table_x = 20, table_y = 300;
+    cleardevice(); //clears screen it involves filling screen with background color
     printf("\nEnter the no. of inputs\t");
     scanf("%d", &n);
     printf("\nEnter X values\n");
@@ -166,6 +182,10 @@ void pie_chart() //input is labels and numeric-WORKING CODE
         outtextxy(table_x, table_y, labels[i]);
         table_y += 20;
     }
+    setcolor(11);
+    rectangle(0, 0, 639, getmaxy());
+    rectangle(10, 10, 629, getmaxy() - (10));
+    floodfill(1, 1, 11);
 }
 
 int coordinate_adjuster_y(int maximum) //adjusts the distribution of graph according to inputs
