@@ -7,7 +7,12 @@ char labels[20][10]; //declared label as global
 int coordinate_adjuster_y(int);
 int coordinate_adjuster_x(int);
 void sorter(int[], int[], int);
-void swapper(int &, int &);
+void swapper(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
 void y_plot(int);
 void x_plot(int);
 void bar_chart();
@@ -35,7 +40,6 @@ int main()
         printf("ERROR: Choice Not Found");
         break;
     }
-    //todo---Thank you screen
     getch();
     closegraph();
     return 0;
@@ -214,13 +218,7 @@ void sorter(int x[], int y[], int n) //for line graph
         for (j = 0; j < n - i - 1; j++)
             if (x[j] > x[j + 1])
             {
-                swap(&x[j], &x[j + 1]);
-                swap(&y[j], &y[j + 1]);
+                swapper(&x[j], &x[j + 1]);
+                swapper(&y[j], &y[j + 1]);
             }
-}
-void swapper(int *xp, int *yp)
-{
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
 }
