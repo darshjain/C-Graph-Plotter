@@ -23,7 +23,7 @@ int main()
 {
     int graph_choice;
     int gd = DETECT, gm;
-    initgraph(&gd, &gm, "c:\\turboc3\\bgi");
+    initgraph(&gd, &gm, "c:\\tc\\bgi");
     setbkcolor(12);
     rectangle(100,100,460,300);
     rectangle(110,110,450,290);
@@ -52,7 +52,6 @@ int main()
 	printf("ERROR: Choice Not Found");
 	break;
     }
-    getch();
     closegraph();
     return 0;
 }
@@ -98,7 +97,8 @@ void bar_3dchart() //input is labels and numeric
     rectangle(0,0,639,getmaxy());
     rectangle(10,10,629,getmaxy()-(10));
     floodfill(1,1,11);
-    cleardevice(); 
+    getch();
+    cleardevice();
 }
 void bar_chart() //input is labels and numeric
 {
@@ -142,7 +142,8 @@ void bar_chart() //input is labels and numeric
     rectangle(0,0,639,getmaxy());
     rectangle(10,10,629,getmaxy()-(10));
     floodfill(1,1,11);
-    cleardevice(); 
+    getch();
+    cleardevice();
 }
 void line_chart() //input is both numeric
 {
@@ -236,6 +237,7 @@ void pie_chart() //input is labels and numeric-WORKING CODE
     rectangle(0,0,639,getmaxy());
     rectangle(10,10,629,getmaxy()-(10));
     floodfill(1,1,11);
+    getch();
 }
 int coordinate_adjuster_y(int maximum) //adjusts the distribution of graph according to inputs
 {
