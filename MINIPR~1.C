@@ -193,7 +193,8 @@ void line_chart() //input is both numeric
 }
 void pie_chart() //input is labels and numeric-WORKING CODE
 {
-    float end_angle, start_angle = 0;
+    char str[10]; //for label
+    float plot, end_angle, start_angle = 0;
     int x_center, y_center, total = 0, n, i, a[20], num, table_x = 20, table_y = 300;
     cleardevice(); //clears screen it involves filling screen with background color
     printf("\nEnter the no. of inputs\t");
@@ -230,7 +231,11 @@ void pie_chart() //input is labels and numeric-WORKING CODE
     for (i = 0; i < n; i++)
     {
         setcolor(i + 2);
-        outtextxy(table_x, table_y, labels[i]);
+        plot = (float)a[i] * 100 / (float)total;
+        gcvt(plot, 4, str);
+        strcat(str, "% ");
+        strcat(str, labels[i]);
+        outtextxy(table_x, table_y, str);
         table_y += 20;
     }
     setcolor(11);
