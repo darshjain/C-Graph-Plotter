@@ -33,6 +33,9 @@ int main()
     outtextxy(130, 140, "2: PIE CHART");
     outtextxy(130, 150, "3: BAR GRAPH");
     outtextxy(130, 160, "4: 3D BAR GRAPH");
+    outtextxy(400, 400, "By");
+    outtextxy(400, 420, "Darsh Jain - 17");
+    outtextxy(400, 440, "Asjad Nirban - 36");
     scanf("%d", &graph_choice);
     setbkcolor(12);
     switch (graph_choice)
@@ -53,6 +56,7 @@ int main()
         printf("ERROR: Choice Not Found");
         break;
     }
+
     close_window();
     closegraph();
     return 0;
