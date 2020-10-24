@@ -19,11 +19,12 @@ void bar_chart();
 void bar_3dchart();
 void line_chart();
 void pie_chart();
+void close_window();
 int main()
 {
     int graph_choice;
     int gd = DETECT, gm;
-    initgraph(&gd, &gm, "c:\\tc\\bgi");
+    initgraph(&gd, &gm, "c:\\turboc3\\bgi");
     setbkcolor(12);
     rectangle(100, 100, 460, 300);
     rectangle(110, 110, 450, 290);
@@ -52,6 +53,7 @@ int main()
         printf("ERROR: Choice Not Found");
         break;
     }
+    close_window();
     closegraph();
     return 0;
 }
@@ -297,4 +299,20 @@ void sorter(int x[], int y[], int n) //for line graph
                 swapper(&x[j], &x[j + 1]);
                 swapper(&y[j], &y[j + 1]);
             }
+}
+void close_window()
+{
+    int i, j, k;
+    cleardevice();
+    rectangle(0, 0, 638, 478);
+    k = 0;
+    while (!kbhit())
+    {
+        setcolor(k);
+        settextstyle(1, 0, 8);
+        outtextxy(100, 150, "THANK YOU");
+        line(90, 250, 580, 250);
+        delay(200);
+        k++;
+    }
 }
