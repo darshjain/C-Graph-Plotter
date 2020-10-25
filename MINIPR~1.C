@@ -12,7 +12,7 @@ int x, y;            //declared x and y a global
 char labels[20][10]; //declared label as global
 int coordinate_adjuster_y(int);
 int coordinate_adjuster_x(int);
-void openwindow();//*******************************************//
+void openwindow(); //*******************************************//
 void sorter(int[], int[], int);
 void swapper(int *xp, int *yp)
 {
@@ -34,10 +34,14 @@ int main()
     initgraph(&gd, &gm, "c:\\turboc3\\bgi");
     //*********************************//
     openwindow();
+    cleardevice();
+    setcolor(WHITE);
+
     //*********************************//
     setbkcolor(12);
     rectangle(100, 100, 460, 300);
     rectangle(110, 110, 450, 290);
+    settextstyle(0, HORIZ_DIR, 0);
     outtextxy(230, 120, "SELECT GRAPH TYPE");
     outtextxy(130, 130, "1: LINE GRAPH");
     outtextxy(130, 140, "2: PIE CHART");
@@ -73,49 +77,50 @@ int main()
 }
 //***************************************************************//
 void openwindow()
-  {
-  int aa,bb,cc,dd,i=10;
-  aa=250;
-  bb=400;
-  cc=260;
-  for(dd=250;dd<350;dd+=20)
-  {
-  setfillstyle(1,2);
-  bar(dd,bb,cc,bb+=10) ;
-  cc+=20;
-  }
-  aa=250;
-  bb=400;
-  cc=260;
-  while(!kbhit())
-  {
-  setcolor(10);
-  settextstyle(1,0,4);
-  outtextxy(200,20,"GRAPH PLOTTER");
-  outtextxy(20,120,"BY: ");
-  outtextxy(20,180,"DARSH JAIN");
-  outtextxy(20,356,"Press any key to continue.....");
-  settextstyle(1,0,2);
-  if((aa==350)&&(cc==360))
-  {
-  aa=250;
-  cc=260;
-  continue;
-  }
-  else
-  {
-  setcolor(10);
-  rectangle(aa,bb,cc,bb+10);
-  rectangle(aa-1,bb-1,cc+1,bb+11);
-  }
-  delay(300);
-  setcolor(BLACK);
-  rectangle(aa-1,bb-1,cc+1,bb+11);
-  aa+=20;
-  cc+=20;
-  }
-  }
-  //*************************************************************//
+{
+    int aa, bb, cc, dd, i = 10;
+    aa = 250;
+    bb = 400;
+    cc = 260;
+    for (dd = 250; dd < 350; dd += 20)
+    {
+        setfillstyle(1, 2);
+        bar(dd, bb, cc, bb += 10);
+        cc += 20;
+    }
+    aa = 250;
+    bb = 400;
+    cc = 260;
+    while (!kbhit())
+    {
+        setcolor(10);
+        settextstyle(1, 0, 4);
+        outtextxy(200, 20, "GRAPH PLOTTER");
+        outtextxy(20, 120, "BY: ");
+        outtextxy(20, 180, "DARSH JAIN");
+        outtextxy(20, 220, "ASJAD NIRBAN");
+        outtextxy(20, 356, "Press any key to continue.....");
+        settextstyle(1, 0, 2);
+        if ((aa == 350) && (cc == 360))
+        {
+            aa = 250;
+            cc = 260;
+            continue;
+        }
+        else
+        {
+            setcolor(10);
+            rectangle(aa, bb, cc, bb + 10);
+            rectangle(aa - 1, bb - 1, cc + 1, bb + 11);
+        }
+        delay(300);
+        setcolor(BLACK);
+        rectangle(aa - 1, bb - 1, cc + 1, bb + 11);
+        aa += 20;
+        cc += 20;
+    }
+}
+//*************************************************************//
 void bar_3dchart() //input is labels and numeric
 {
     int n, i, a[10], b[10], x = 100, factor_y = 20, max_value_y = 0;
