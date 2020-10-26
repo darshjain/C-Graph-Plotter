@@ -1,9 +1,3 @@
-//*********************************************************//
-// I have added stars where ever changes have been made ,so its easy for you to differentiate//
-//HOPE YOU LIKE IT//
-//THANKS FOR THIS OPPORTUNITY//
-//****************************************************//
-
 #include <stdio.h>
 #include <conio.h>
 #include <graphics.h>
@@ -12,7 +6,7 @@ int x, y;            //declared x and y a global
 char labels[20][10]; //declared label as global
 int coordinate_adjuster_y(int);
 int coordinate_adjuster_x(int);
-void openwindow(); //*******************************************//
+void openwindow(); 
 void sorter(int[], int[], int);
 void swapper(int *xp, int *yp)
 {
@@ -32,12 +26,9 @@ int main()
     int graph_choice;
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "c:\\turboc3\\bgi");
-    //*********************************//
     openwindow();
     cleardevice();
     setcolor(WHITE);
-
-    //*********************************//
     setbkcolor(12);
     rectangle(100, 100, 460, 300);
     rectangle(110, 110, 450, 290);
@@ -75,7 +66,6 @@ int main()
     closegraph();
     return 0;
 }
-//***************************************************************//
 void openwindow()
 {
     int aa, bb, cc, dd, i = 10;
@@ -93,6 +83,10 @@ void openwindow()
     cc = 260;
     while (!kbhit())
     {
+        setcolor(11);
+        rectangle(0, 0, 639, getmaxy());
+        rectangle(10, 10, 629, getmaxy() - (10));
+        floodfill(1, 1, 11);
         setcolor(10);
         settextstyle(1, 0, 4);
         outtextxy(200, 20, "GRAPH PLOTTER");
@@ -114,13 +108,12 @@ void openwindow()
             rectangle(aa - 1, bb - 1, cc + 1, bb + 11);
         }
         delay(300);
-        setcolor(BLACK);
+        setcolor(4);
         rectangle(aa - 1, bb - 1, cc + 1, bb + 11);
         aa += 20;
         cc += 20;
     }
 }
-//*************************************************************//
 void bar_3dchart() //input is labels and numeric
 {
     int n, i, a[10], b[10], x = 100, factor_y = 20, max_value_y = 0;
