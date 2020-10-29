@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <conio.h>
 #include <graphics.h>
@@ -6,7 +7,7 @@ int x, y;            //declared x and y a global
 char labels[20][10]; //declared label as global
 int coordinate_adjuster_y(int);
 int coordinate_adjuster_x(int);
-void openwindow(); 
+void openwindow();
 void sorter(int[], int[], int);
 void swapper(int *xp, int *yp)
 {
@@ -66,6 +67,7 @@ int main()
     closegraph();
     return 0;
 }
+
 void openwindow()
 {
     int aa, bb, cc, dd, i = 10;
@@ -114,6 +116,7 @@ void openwindow()
         cc += 20;
     }
 }
+
 void bar_3dchart() //input is labels and numeric
 {
     int n, i, a[10], b[10], x = 100, factor_y = 20, max_value_y = 0;
@@ -281,8 +284,6 @@ void pie_chart() //input is labels and numeric-WORKING CODE
         setfillstyle(SOLID_FILL, i + 2);
         end_angle = ((float)num * 360 / (float)total);
         printf("");
-        //printf("%d\n", end_angle);
-        //it prints end_angle as 0 but the very next lines execute perfectly in each loop
         end_angle += start_angle;
         pieslice(x_center, y_center, start_angle, end_angle, 120);
         start_angle = end_angle;
@@ -371,5 +372,9 @@ void close_window()
         line(90, 250, 580, 250);
         delay(200);
         k++;
+        setcolor(11);
+        rectangle(0, 0, 639, getmaxy());
+        rectangle(10, 10, 629, getmaxy() - (10));
+        floodfill(1, 1, 11);
     }
 }
