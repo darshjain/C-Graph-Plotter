@@ -5,5 +5,3 @@ The graph is well adjusted to the screen and has frame around it.<br>
 BAR GRAPH,LINE GRAPH,PIE CHART
 <hr>
  It uses Turbo C and Graphics library
-
- 
